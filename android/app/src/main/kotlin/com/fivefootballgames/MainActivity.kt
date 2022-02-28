@@ -1,0 +1,6 @@
+package com.fivefootballgames
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
