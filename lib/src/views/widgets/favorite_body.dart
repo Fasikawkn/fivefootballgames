@@ -18,7 +18,9 @@ class _FavoriteBodyState extends State<FavoriteBody> {
   @override
   void initState() {
     super.initState();
-    _getFavMatches();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      _getFavMatches();
+    });
   }
 
   _getFavMatches() async {
@@ -40,12 +42,20 @@ class _FavoriteBodyState extends State<FavoriteBody> {
     return Consumer<FavoriteContorller>(builder: (context, model, child) {
       if (model.favGameResponse.status == Status.loading) {
         return const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(
+            color: kGreenColor,
+          ),
         );
       } else if (model.favGameResponse.status == Status.completed) {
         debugPrint("Favorite Game is ${model.favGameResponse.data}");
         List<Map<String, dynamic>> _favGame = model.favGameResponse.data;
-        return SingleChildScrollView(
+        return _favGame.isEmpty?
+       const  Center(
+         child: Text("No Favorite yet!", style: TextStyle(
+           color: Colors.white,
+         ),),
+         ):
+         SingleChildScrollView(
           child: Column(
               children: _favGame
                   .map(
@@ -117,6 +127,7 @@ class _FavoriteBodyState extends State<FavoriteBody> {
                             : const Center(
                                 child: SpinKitThreeBounce(
                                   color: kGreenColor,
+                                  size: 20.0,
                                 ),
                               ),
                       ],

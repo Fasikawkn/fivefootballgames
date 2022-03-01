@@ -27,3 +27,11 @@ MaterialColor createMaterialColor(Color color) {
   }
   return MaterialColor(color.value, swatch);
 }
+
+
+ String getDate() {
+    DateTime date =
+        DateTime.now();
+
+    return "${date.year.toString().substring(2)}.${date.month < 10 ? '0${date.month}' : date.month}";
+  }

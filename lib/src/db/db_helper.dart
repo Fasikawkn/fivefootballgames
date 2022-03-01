@@ -13,7 +13,7 @@ class DBHelper extends ChangeNotifier {
     db = await sql.openDatabase(path.join(dbPath, 'favorite_games.db'),
         onCreate: (db, version) {
       final stmt = '''CREATE TABLE IF NOT EXISTS Favorite_games (
-            index NOT NULL AUTO_INCREMENT,
+           
             game_id TEXT PRIMARY KEY
           
         )'''
@@ -35,9 +35,10 @@ class DBHelper extends ChangeNotifier {
 
   Future<List<Map<String, dynamic>>> getFavoriteGames() async {
     String query = "SELECT * FROM Favorite_games";
-    return await db!.rawQuery(
+     List<Map<String, dynamic>> _row = await db!.rawQuery(
       query,
     );
+   return _row.reversed.toList();
   }
 
   Future<bool> isFavorite(String gameId) async {

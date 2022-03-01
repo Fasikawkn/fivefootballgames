@@ -3,7 +3,6 @@ import 'package:fivefootballgames/src/controllers/live_game_controller.dart';
 import 'package:fivefootballgames/src/db/db_helper.dart';
 import 'package:fivefootballgames/src/models/services/data/data_provider.dart';
 import 'package:fivefootballgames/src/models/services/repository/repository.dart';
-import 'package:fivefootballgames/src/views/screens/home_page.dart';
 import 'package:fivefootballgames/src/views/screens/splash_screen.dart';
 import 'package:fivefootballgames/utils/constants.dart';
 import 'package:flutter/material.dart';

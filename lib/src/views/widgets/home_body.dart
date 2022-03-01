@@ -28,9 +28,12 @@ class _HomeBodyState extends State<HomeBody> {
     return SingleChildScrollView(
       child: Consumer<LiveGameModel>(builder: (context, model, child) {
         if (model.liveGameResponse.status == Status.loading) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: kGreenColor,
+          return const Padding(
+            padding:  EdgeInsets.only(top: 50.0),
+            child:  Center(
+              child: CircularProgressIndicator(
+                color: kGreenColor,
+              ),
             ),
           );
         } else if (model.liveGameResponse.status == Status.completed) {
@@ -75,6 +78,9 @@ class _HomeBodyState extends State<HomeBody> {
                                             listen: false)
                                         .insertTeam(
                                             _liveGames[widget.index].gameId);
+                                            setState(() {
+                                              
+                                            });
                                   },
                                   icon: FutureBuilder<bool>(
                                     future: Provider.of<FavoriteContorller>(
